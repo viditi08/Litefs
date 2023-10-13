@@ -1,0 +1,69 @@
+{
+  "$schema": "https://www.krakend.io/schema/v2.4/krakend.json",
+  "version": 3,
+  "endpoints": [
+    {
+      "endpoint": "/api/books",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/books",
+          "method": "GET",
+          "host": [
+            "http://127.0.0.1:5000"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/books/{id}",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/books/{id}",
+          "method": "GET",
+          "host": [
+            "http://127.0.0.1:5000"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/search/",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/search",
+          "method": "GET",
+          "host": [
+            "http://127.0.0.1:5000"
+          ]
+        }
+      ],
+      "input_query_strings": [
+        "author",
+        "published",
+        "title",
+        "first_sentence"
+      ]
+    },
+    {
+      "endpoint": "/api/books/",
+      "method": "POST",
+      "backend": [
+        {
+          "url_pattern": "/books/",
+          "method": "POST",
+          "host": [
+            "http://127.0.0.1:5000"
+          ],
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "backend_alias"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

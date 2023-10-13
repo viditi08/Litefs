@@ -1,0 +1,6 @@
+
+
+primary: bin/litefs mount -config etc/primary.yml
+secondary: bin/litefs mount -config etc/secondary.yml
+krakend: echo ./etc/krakend.json | entr -nrz krakend run --config etc/krakend.json --port $PORT
+# api: uvicorn --port 5000 api:app --reload

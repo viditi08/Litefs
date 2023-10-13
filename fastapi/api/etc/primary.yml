@@ -1,0 +1,27 @@
+fuse:
+  dir: "var/primary/fuse"
+
+  allow-other: false
+
+data:
+  dir: "var/primary/data"
+
+  compress: true
+exec: "uvicorn --port $PORT api:app --reload" 
+
+http:
+  addr: ":20202"
+
+lease:
+  type: "static"
+
+  advertise-url: "http://127.0.0.20202"
+
+  candidate: true
+
+
+
+
+
+
+
